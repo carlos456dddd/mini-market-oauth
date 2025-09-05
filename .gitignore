@@ -1,3 +1,5 @@
 products/.env
 users/.env
 .env
+*.env
+.env.*
