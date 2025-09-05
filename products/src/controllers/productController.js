@@ -11,3 +11,20 @@ export async function createProduct(req, res) {
   const product = await prisma.product.create({ data: { name, price, stock } });
   res.status(201).json(product);
 }
+
+export async function DeleteProduct(req, res) {
+  const id = req.params.id;
+  await prisma.product.delete({where: {
+    id: id,
+  } }) 
+}
+
+export async function editProduct(req, res) {
+  const id = req.params.id;
+  const date = req.body;
+
+  await prisma.product.update({where:{
+    id: id,  },
+  data: date
+  })
+}
