@@ -21,4 +21,4 @@ Thumbs.db
 # Build output
 dist/
 build/
-users/.env
+products/.env
