@@ -13,7 +13,11 @@ router.get('/google/callback', passport.authenticate('google', { session: false 
 
     const token = jwt.sign({ id: req.user.id, email: req.user.email, role: req.user.role }, process.env.JWT_SECRET, { expiresIn: '15m' });
 
-    res.redirect(`${process.env.FRONT_URL}/oauth/success?token=${token}`);
+    // res.redirect(`${process.env.FRONT_URL}/oauth/success?token=${token}`);
+    //No estoy muy seguro pero en este caso
+   return res.status(200).json({token});
+
+
 });
 
 export default router;

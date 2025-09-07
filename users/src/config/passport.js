@@ -13,7 +13,7 @@ passport.use(new GoogleStrategy({
         'https://www.googleapis.com/auth/userinfo.profile'
     ],
 
-}, async (accessToken, refreshToken, profile, done) => {
+}, async (profile, done) => {
     console.log("Google profile:", profile);
     const email = profile.emails?.[0]?.value || null;
     const googleId = profile.id;
@@ -25,7 +25,7 @@ passport.use(new GoogleStrategy({
     const user = await prisma.user.upsert({
         where: { email },
         update: { googleId, name },
-        create: { email, googleId, name, role: 'user' ,password:null}
+        create: { email, googleId, name, role: 'user', password: null }
     });
 
     return done(null, user);
