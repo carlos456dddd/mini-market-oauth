@@ -6,6 +6,7 @@ import { createProductSchema } from '../schemas/productSchema.js';
 
 
 
+
 const router = express.Router();
 router.get('/', getProducts);
 router.post('/', validate(createProductSchema), createProduct);
